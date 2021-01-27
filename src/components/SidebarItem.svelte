@@ -6,7 +6,7 @@
 <li class="nav-item">
   <a class="nav-link d-inline-flex text-white" class:active {href}>
     <div class="icone">
-      <slot name="icon" />
+      <slot name="icone" />
     </div>
     <div>
       <slot />

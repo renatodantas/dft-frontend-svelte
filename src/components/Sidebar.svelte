@@ -7,25 +7,26 @@
 </div>
 
 <ul class="nav flex-column mt-4">
-  <SidebarItem icone="fa-user">
-    <i slot="icon" class="bi-alarm" />
+  <SidebarItem href="/tipificacao/categorias">
+    <i slot="icone" class="bi-arrow-right-square" />
     Categoria de Serviços
   </SidebarItem>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Categorias de Serviço</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Órgãos</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Unidades</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Entregas</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Indicadores de Produtividade</a>
-  </li>
+  <SidebarItem>
+    <i slot="icone" class="bi-arrow-right-square" />
+    Órgãos
+  </SidebarItem>
+  <SidebarItem>
+    <i slot="icone" class="bi-arrow-right-square" />
+    Unidades
+  </SidebarItem>
+  <SidebarItem>
+    <i slot="icone" class="bi-arrow-right-square" />
+    Entregas
+  </SidebarItem>
+  <SidebarItem>
+    <i slot="icone" class="bi-arrow-right-square" />
+    Indic. de Produtividade
+  </SidebarItem>
 </ul>
 
 <style>
