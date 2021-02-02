@@ -1,3 +1,7 @@
+<script lang="typescript">
+  import { active } from "tinro";
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button
@@ -7,14 +11,20 @@
       data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon" />
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="/tipificacao"
+            use:active
+          >
             Tipificação
           </a>
         </li>
@@ -62,3 +72,8 @@
     </div>
   </div>
 </nav>
+
+<style>
+  .active {
+  }
+</style>

@@ -1,8 +1,8 @@
-<script>
+<script lang="typescript">
   /*
   Componente responsável por carregar as páginas de forma síncrona.
   */
-  export let component;
+  export let component: any;
 </script>
 
 {#await component.then ? component : component()}

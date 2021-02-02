@@ -1,8 +1,8 @@
-<script>
+<script lang="typescript">
   import { router } from "tinro";
   import Navbar from "./components/Navbar.svelte";
   import Sidebar from "./components/Sidebar.svelte";
-  import Routes from "./routes/Routes.svelte";
+  import Routes from "./Routes.svelte";
 
   // Navega para o topo ao mudar de rota
   router.subscribe(() => window.scrollTo(0, 0));
