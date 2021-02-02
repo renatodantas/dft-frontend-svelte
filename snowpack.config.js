@@ -5,11 +5,14 @@ module.exports = {
     src: '/dist',
   },
   alias: {
+    /*
     '@utils': './src/utils',
     '@components': './src/components'
+    */
   },
   plugins: [
-    '@snowpack/plugin-svelte'
+    '@snowpack/plugin-svelte',
+    '@snowpack/plugin-typescript'
   ],
   routes: [
     /* Enable an SPA Fallback in development: */
