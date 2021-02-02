@@ -1,5 +1,17 @@
 <script lang="typescript">
+  import { createEventDispatcher } from "svelte";
   import { active } from "tinro";
+  import * as navbarItens from "./navbar-itens";
+
+  const dispatch = createEventDispatcher();
+
+  function exibir(item: string) {
+    dispatch("exibir", {
+      itens: navbarItens[item],
+    });
+  }
+
+  //  TODO: pendência: enviar os dados do sidebar no "onload" do componente.
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,8 +36,21 @@
             aria-current="page"
             href="/tipificacao"
             use:active
+            on:click={() => exibir("tipificacao")}
           >
             Tipificação
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="/relatorios"
+            use:active
+            on:click={() => exibir("relatorios")}
+          >
+            Relatórios
           </a>
         </li>
         <!--
@@ -75,5 +100,7 @@
 
 <style>
   .active {
+    color: #5a579d !important;
+    font-weight: 500;
   }
 </style>
