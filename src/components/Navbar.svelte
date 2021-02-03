@@ -1,17 +1,26 @@
 <script lang="typescript">
-  import { createEventDispatcher } from "svelte";
-  import { active } from "tinro";
-  import * as navbarItens from "./navbar-itens";
+  import { createEventDispatcher, onMount } from "svelte";
+  import { active, router } from "tinro";
+  import * as navbarItens from "../models/navbar-itens";
 
   const dispatch = createEventDispatcher();
+  const meta = router.meta();
 
-  function exibir(item: string) {
-    dispatch("exibir", {
-      itens: navbarItens[item],
+  // Listener para mudanças de navegação
+  // e atualização do Sidebar
+  onMount(() => {
+    console.log("montou!");
+
+    meta.subscribe((meta) => {
+      console.log("entrou:", meta.url);
+      const urlSplit: string[] = meta.url.split(/\//g);
+      const item = urlSplit.length > 1 ? urlSplit[1] : "";
+
+      dispatch("exibir", {
+        itens: navbarItens[item] || [],
+      });
     });
-  }
-
-  //  TODO: pendência: enviar os dados do sidebar no "onload" do componente.
+  });
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,7 +45,6 @@
             aria-current="page"
             href="/tipificacao"
             use:active
-            on:click={() => exibir("tipificacao")}
           >
             Tipificação
           </a>
@@ -48,7 +56,6 @@
             aria-current="page"
             href="/relatorios"
             use:active
-            on:click={() => exibir("relatorios")}
           >
             Relatórios
           </a>

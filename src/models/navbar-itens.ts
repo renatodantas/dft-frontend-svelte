@@ -1,4 +1,4 @@
-import type { SidebarItem } from "interfaces/sidebar-item";
+import type { SidebarItem } from "models/sidebar-item";
 
 const tipificacao: SidebarItem[] = [
   {

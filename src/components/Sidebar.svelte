@@ -1,11 +1,13 @@
 <script lang="typescript">
-  import type { SidebarItem } from "interfaces/sidebar-item";
+  import type { SidebarItem } from "../models/sidebar-item";
 
   export let itens: SidebarItem[];
 </script>
 
 <div id="sidebar-logo" class="align-bottom pt-2">
-  <img src="/dft-logo.png" alt="Logotipo" height="40" />
+  <a href="/">
+    <img src="/dft-logo.png" alt="Logotipo" height="40" />
+  </a>
 </div>
 
 <ul class="nav flex-column mt-4">
