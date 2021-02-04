@@ -7,6 +7,7 @@
 <div id="sidebar-logo" class="align-bottom pt-2">
   <a href="/">
     <img src="/dft-logo.png" alt="Logotipo" height="40" />
+    DFT
   </a>
 </div>
 
@@ -35,8 +36,12 @@
     background-color: #43408f;
   }
 
-  #sidebar-logo > img {
+  #sidebar-logo a {
     margin-left: 10px;
+    text-decoration: none;
+    color: #d3d2de;
+    font-size: 1.4rem;
+    font-weight: bold;
   }
 
   a.nav-link {
