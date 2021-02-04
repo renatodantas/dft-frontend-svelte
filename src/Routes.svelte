@@ -7,7 +7,7 @@
   <Lazy component={import("./routes/Home.svelte")} />
 </Route>
 
-<!-- Tipificação/* -->
+<!-- Tipificação -->
 <Route path="/tipificacao">
   <Lazy component={import("./routes/tipificacao/Tipificacao.svelte")} />
 </Route>
@@ -20,4 +20,9 @@
   <Lazy
     component={import("./routes/tipificacao/categorias/CategoriaEdit.svelte")}
   />
+</Route>
+
+<!-- Relatórios -->
+<Route path="/relatorios">
+  <Lazy component={import("./routes/relatorios/Relatorios.svelte")} />
 </Route>
