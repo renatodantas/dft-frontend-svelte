@@ -2,6 +2,12 @@
 
 > ✨ Svelte + Typescript project created with Create Snowpack App (CSA).
 
+This project is supposed to be a CRUD example made with some fresh technologies (and trying to always keep it up to date):
+
+- Svelte 3
+- Snowpack 3
+- Bootstrap 5 (beta)
+
 ## Available Scripts
 
 ### npm start
