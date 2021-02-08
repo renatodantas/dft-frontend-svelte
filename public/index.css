@@ -4,3 +4,8 @@
 html, body {
   height: 100%;
 }
+
+.card-titulo {
+  color: #43408F;
+  background-color: rgba(203, 201, 240, 0.3) !important;
+}

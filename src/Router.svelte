@@ -1,7 +1,12 @@
 <script lang="typescript">
   import { Route } from "tinro";
+  import Error404 from "./routes/Error404.svelte";
   import Lazy from "./utils/Lazy.svelte";
 </script>
+
+<Route fallback>
+  <Error404 />
+</Route>
 
 <Route path="/">
   <Lazy component={import("./routes/Home.svelte")} />

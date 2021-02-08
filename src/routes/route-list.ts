@@ -1,4 +1,6 @@
-import type { SidebarItem } from "models/sidebar-item";
+import type { SidebarItem } from "../models/sidebar-item";
+
+const home: SidebarItem[] = [];
 
 const tipificacao: SidebarItem[] = [
   {
@@ -52,6 +54,7 @@ const relatorios: SidebarItem[] = [
 ];
 
 export {
+  home,
   tipificacao,
   relatorios
 };

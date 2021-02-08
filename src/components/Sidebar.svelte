@@ -1,7 +1,5 @@
 <script lang="typescript">
-  import type { SidebarItem } from "../models/sidebar-item";
-
-  export let itens: SidebarItem[];
+  import { sidebarItens } from "../stores/sidebar-store";
 </script>
 
 <div id="sidebar-logo" class="align-bottom pt-2">
@@ -12,7 +10,7 @@
 </div>
 
 <ul class="nav flex-column mt-4">
-  {#each itens as item}
+  {#each $sidebarItens as item}
     <li class="nav-item">
       <a
         class="nav-link d-inline-flex text-white"

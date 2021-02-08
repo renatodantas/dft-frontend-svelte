@@ -1,25 +1,18 @@
 <script lang="typescript">
-  import { createEventDispatcher, onMount } from "svelte";
   import { active, router } from "tinro";
-  import * as navbarItens from "../models/navbar-itens";
-
-  const dispatch = createEventDispatcher();
-  const meta = router.meta();
+  import * as navbarItens from "../routes/route-list";
+  import { sidebarItens } from "../stores/sidebar-store";
 
   // Listener para mudanças de navegação
   // e atualização do Sidebar
-  onMount(() => {
-    console.log("montou!");
+  const meta = router.meta();
+  meta.subscribe((meta) => {
+    const urlSplit: string[] = meta.url.split(/\//g);
+    const item = urlSplit[1];
 
-    meta.subscribe((meta) => {
-      console.log("entrou:", meta.url);
-      const urlSplit: string[] = meta.url.split(/\//g);
-      const item = urlSplit.length > 1 ? urlSplit[1] : "";
-
-      dispatch("exibir", {
-        itens: navbarItens[item] || [],
-      });
-    });
+    // Envia para a store
+    const itens = navbarItens[item] || [];
+    sidebarItens.set(itens);
   });
 </script>
 
