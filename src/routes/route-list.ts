@@ -1,7 +1,5 @@
 import type { SidebarItem } from "../models/sidebar-item";
 
-const home: SidebarItem[] = [];
-
 const tipificacao: SidebarItem[] = [
   {
     href: "/tipificacao/categorias",
@@ -54,7 +52,6 @@ const relatorios: SidebarItem[] = [
 ];
 
 export {
-  home,
   tipificacao,
   relatorios
 };
