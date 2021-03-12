@@ -8,6 +8,11 @@ export interface SidebarItem {
   href: string;
 
   /**
+   * Agrupador do item do sidebar
+   */
+  agrupador: string;
+
+  /**
    * Descrição do item
    */
   descricao: string;

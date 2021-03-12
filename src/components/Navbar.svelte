@@ -1,18 +1,17 @@
 <script lang="typescript">
-  import { active, router } from "tinro";
-  import * as navbarItens from "../routes/route-list";
-  import { sidebarItens } from "../stores/sidebar-store";
+import { active,meta } from "tinro";
+import { itens } from "../models/sidebar-list";
+import { sidebarItens } from "../stores/sidebar-store";
 
   // Listener para mudanças de navegação
   // e atualização do Sidebar
-  const meta = router.meta();
-  meta.subscribe((meta) => {
+  meta().subscribe((meta) => {
     const urlSplit: string[] = meta.url.split(/\//g);
     const item = urlSplit[1];
 
     // Envia para a store
-    const itens = navbarItens[item] || [];
-    sidebarItens.set(itens);
+    const itensSelecionados = itens.filter(i => i.agrupador === item);
+    sidebarItens.set(itensSelecionados);
   });
 </script>
 

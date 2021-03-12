@@ -1,5 +1,5 @@
 /**
- * Represeta um item da lista de cards para
+ * Representa um item da lista de cards para
  * os links do módulo selecionado.
  */
 export interface CardLink {
