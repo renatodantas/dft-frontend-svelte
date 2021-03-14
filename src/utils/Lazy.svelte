@@ -5,8 +5,16 @@
   export let component: any;
 </script>
 
+<style>
+  #loading {
+    margin: 2rem;
+  }
+</style>
+
 {#await component.then ? component : component()}
-  Carregando...
+  <div id="loading">
+    <img src="/loading.gif" alt="Aguardando carregamento">
+  </div>
 {:then Cmp}
   <svelte:component this={Cmp.default} />
 {/await}
