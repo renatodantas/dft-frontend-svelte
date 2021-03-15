@@ -1,6 +1,6 @@
 <script lang="typescript">
   import CardLinks from "../../components/CardLinks.svelte";
-  import type { CardLink } from "../../models/card-link";
+  import type { CardLink } from "../../models/components/card-link";
 
   const itens: CardLink[] = [
     {

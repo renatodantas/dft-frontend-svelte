@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import { sidebarItens } from "../stores/sidebar-store";
+  import { sidebarItens } from "../stores/sidebar.store";
 </script>
 
 <div id="sidebar-logo" class="align-bottom pt-2">

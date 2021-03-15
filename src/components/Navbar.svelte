@@ -1,7 +1,7 @@
 <script lang="typescript">
-import { active,meta } from "tinro";
-import { itens } from "../models/sidebar-list";
-import { sidebarItens } from "../stores/sidebar-store";
+  import { itens } from "src/models/components/sidebar-list";
+  import { active, meta } from "tinro";
+  import { sidebarItens } from "../stores/sidebar.store";
 
   // Listener para mudanças de navegação
   // e atualização do Sidebar
@@ -10,7 +10,7 @@ import { sidebarItens } from "../stores/sidebar-store";
     const item = urlSplit[1];
 
     // Envia para a store
-    const itensSelecionados = itens.filter(i => i.agrupador === item);
+    const itensSelecionados = itens.filter((i) => i.agrupador === item);
     sidebarItens.set(itensSelecionados);
   });
 </script>

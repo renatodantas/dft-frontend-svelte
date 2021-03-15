@@ -1,6 +1,6 @@
 <script lang="typescript">
   import { router } from "tinro";
-  import type { CardLink } from "../models/card-link";
+  import type { CardLink } from "../models/components/card-link";
 
   export let itens: CardLink[] = [];
 

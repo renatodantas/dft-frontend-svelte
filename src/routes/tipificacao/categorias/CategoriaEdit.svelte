@@ -1,8 +1,5 @@
-<style>
-  .card-body {
-    height: 3rem;
-  }
-</style>
+<script lang="typescript">
+</script>
 
 <div class="container">
   <div class="card card-titulo shadow-sm my-4">
@@ -11,7 +8,11 @@
     </div>
   </div>
 
-  <form>
-    
-  </form>
+  <form />
 </div>
+
+<style>
+  .card-body {
+    height: 3rem;
+  }
+</style>

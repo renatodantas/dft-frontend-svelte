@@ -5,10 +5,11 @@
     "test": "web-test-runner \"src/**/*.test.ts\""
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
     "svelte": "^3.35.0",
-    "tinro": "^0.5.15"
+    "tinro": "^0.6.0"
   },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.0.5",

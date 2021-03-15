@@ -4,6 +4,9 @@ module.exports = {
     public: { url: '/', static: true },
     src: { url: '/dist' },
   },
+  alias: {
+    "src": "./src"
+  },
   plugins: [
     '@snowpack/plugin-svelte',
     '@snowpack/plugin-dotenv',
