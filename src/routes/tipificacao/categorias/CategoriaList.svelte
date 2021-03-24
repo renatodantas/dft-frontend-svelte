@@ -1,38 +1,30 @@
 <script lang="typescript">
   import { onMount } from "svelte";
   import { router } from "tinro";
-  import TableHeader from "../../../components/TableHeader.svelte";
+  import TableHeader from "../../../components/table/Header.svelte";
   import {
     categorias,
     loadCategorias,
   } from "../../../stores/categoria-servico.store";
 
-  let fieldSort = "id";
-  let fieldOrder = "asc";
   // let page = 0;
   // let size = 10;
+  let params: Record<string, string>;
 
   onMount(async () => {
     await loadCategorias();
   });
 
   router.subscribe(() => {
-    console.log("mudou route:", router.location.query.get());
-    router.location.query.get("sort");
-    // loadCategorias({
-    //   sort: fieldOrder,
-    //   order: fieldOrder,
-    //   page,
-    //   size,
-    // });
+    params = router.location.query.get() as Record<string, string>;
+    console.log("Mudou parâmetros:", params);
+    loadCategorias({
+      // page: params["page"] || undefined,
+      // size: params["size"] || undefined,
+      sort: params["sort"],
+      order: params["order"],
+    });
   });
-
-  function ordenar(event: MouseEvent) {
-    const link = <HTMLAnchorElement>event.target;
-    const { sort, order } = link.dataset;
-    router.location.query.set("sort", `${sort}`);
-    router.location.query.set("order", `${order}`);
-  }
 </script>
 
 <div class="container">
@@ -46,36 +38,7 @@
   </div>
 
   <table class="table table-striped table-bordered">
-    <!--
-      <thead>
-        <tr>
-          <th>
-            ID
-          {#if fieldSort === "id"}
-            {#if fieldOrder === "desc"}
-              <span
-                on:click={ordenar}
-                role="button"
-                data-sort="id"
-                class="bi-caret-up-fill"
-              />
-              {:else}
-              <span
-                on:click={ordenar}
-                role="button"
-                data-sort="id"
-                data-order="desc"
-                class="bi-caret-down-fill"
-              />
-            {/if}
-          {/if}
-        </th>
-        <th>Descrição</th>
-        <th />
-      </tr>
-    </thead>
-    -->
-    <TableHeader />
+    <TableHeader {params} />
     <tbody>
       {#each $categorias as item}
         <tr>

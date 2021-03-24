@@ -13,10 +13,13 @@ export const categorias = writable<CategoriaServico[]>([]);
 export const categoriaSelecionada = writable<CategoriaServico>({});
 
 export async function loadCategorias(paginacao?: Paginacao): Promise<void> {
+  console.log('chamou!');
+  
   try {
     const response = await axios.get<CategoriaServico[]>(
       'http://localhost:5000/api/categorias-servico', {
-        withCredentials: true
+        withCredentials: true,
+        params: paginacao
       });
     categorias.set(response.data);
     
