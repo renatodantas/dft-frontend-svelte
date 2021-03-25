@@ -17,7 +17,6 @@
 
   router.subscribe(() => {
     params = router.location.query.get() as Record<string, string>;
-    console.log("Mudou parâmetros:", params);
     loadCategorias({
       // page: params["page"] || undefined,
       // size: params["size"] || undefined,

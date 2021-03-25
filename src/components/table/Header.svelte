@@ -3,12 +3,12 @@
   import { meta, router } from "tinro";
   import HeaderColumn from "./HeaderColumn.svelte";
 
-  type Params = "sort" | "order";
+  type HeaderParams = "sort" | "order";
   type SortOrder = "desc" | undefined;
   const route = meta();
 
   // Parâmetros
-  export let params: Record<Params, string>;
+  export let params: Record<HeaderParams, string>;
 
   let sortedColumn: string;
   let sortedOrder: SortOrder;
@@ -37,7 +37,6 @@
         delete query.order;
       }
     }
-    console.log("Params depois:", query);
     router.location.query.replace(query);
   }
 
