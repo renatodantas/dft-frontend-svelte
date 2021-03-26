@@ -2,5 +2,9 @@
 process.env.NODE_ENV = 'test';
 
 module.exports = {
+  coverageConfig: {
+    report: true,
+    exclude: ['**/*/_snowpack/**/*'],
+  },
   plugins: [require('@snowpack/web-test-runner-plugin')()],
 };

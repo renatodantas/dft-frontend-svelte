@@ -1,19 +1,12 @@
 import axios from "axios";
-import type { Pageable } from "src/models/components/pageable";
+import type { Pageable, PageableParams } from "src/models/components/pagination";
 import type { CategoriaServico } from "src/models/domain/categoria-servico";
 import { writable } from "svelte/store";
-
-type Paginacao = {
-  sort?: string,
-  order?: string,
-  page?: number,
-  size?: number,
-}
 
 export const categorias = writable<CategoriaServico[]>([]);
 export const categoriaSelecionada = writable<CategoriaServico>({});
 
-export async function loadCategorias(paginacao?: Paginacao): Promise<void> {
+export async function loadCategorias(paginacao?: PageableParams): Promise<void> {
   console.log('[loadCategorias] GET', paginacao);
   
   try {

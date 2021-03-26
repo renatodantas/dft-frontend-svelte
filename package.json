@@ -2,7 +2,9 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "web-test-runner \"src/**/*.test.ts\""
+    "test": "web-test-runner \"src/**/*.test.ts\" --puppeteer --debug",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -21,6 +23,8 @@
     "@types/mocha": "^8.2.2",
     "@types/snowpack-env": "^2.3.3",
     "@web/test-runner": "^0.12.17",
+    "@web/test-runner-browserstack": "^0.4.2",
+    "@web/test-runner-puppeteer": "^0.9.3",
     "chai": "^4.3.4",
     "snowpack": "^3.1.2",
     "svelte-preprocess": "^4.6.9",

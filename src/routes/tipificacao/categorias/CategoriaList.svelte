@@ -1,5 +1,6 @@
 <script lang="typescript">
   import type { Column } from "src/models/components/table-column";
+  import { parseQueryParams } from "src/utils/parsers";
   import { onMount } from "svelte";
   import { router } from "tinro";
   import TableHeader from "../../../components/table/Header.svelte";
@@ -8,21 +9,15 @@
     loadCategorias,
   } from "../../../stores/categoria-servico.store";
 
-  // let page = 0;
-  // let size = 10;
-
   onMount(async () => {
     await loadCategorias();
   });
 
   router.subscribe(() => {
-    const params = router.location.query.get() as Record<string, string>;
-    loadCategorias({
-      // page: params["page"] || undefined,
-      // size: params["size"] || undefined,
-      sort: params["sort"],
-      order: params["order"],
-    });
+    const params = parseQueryParams(
+      router.location.query.get() as Record<string, string>
+    );
+    loadCategorias(params);
   });
 
   const columns: Column[] = [
