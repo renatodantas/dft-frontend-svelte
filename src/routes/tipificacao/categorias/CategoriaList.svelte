@@ -1,4 +1,5 @@
 <script lang="typescript">
+  import type { Column } from "src/models/components/table-column";
   import { onMount } from "svelte";
   import { router } from "tinro";
   import TableHeader from "../../../components/table/Header.svelte";
@@ -9,14 +10,13 @@
 
   // let page = 0;
   // let size = 10;
-  let params: Record<string, string>;
 
   onMount(async () => {
     await loadCategorias();
   });
 
   router.subscribe(() => {
-    params = router.location.query.get() as Record<string, string>;
+    const params = router.location.query.get() as Record<string, string>;
     loadCategorias({
       // page: params["page"] || undefined,
       // size: params["size"] || undefined,
@@ -24,6 +24,22 @@
       order: params["order"],
     });
   });
+
+  const columns: Column[] = [
+    {
+      property: "id",
+      label: "ID",
+      sortable: true,
+    },
+    {
+      property: "descricao",
+      label: "Descrição",
+      sortable: true,
+    },
+    {
+      label: "",
+    },
+  ];
 </script>
 
 <div class="container">
@@ -37,7 +53,7 @@
   </div>
 
   <table class="table table-striped table-bordered">
-    <TableHeader {params} />
+    <TableHeader {columns} />
     <tbody>
       {#each $categorias as item}
         <tr>

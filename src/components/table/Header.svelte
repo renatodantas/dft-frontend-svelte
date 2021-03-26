@@ -1,17 +1,14 @@
 <script lang="typescript">
   import type { Column } from "src/models/components/table-column";
-  import { meta, router } from "tinro";
+  import { router } from "tinro";
   import HeaderColumn from "./HeaderColumn.svelte";
 
-  type HeaderParams = "sort" | "order";
   type SortOrder = "desc" | undefined;
-  const route = meta();
-
-  // Parâmetros
-  export let params: Record<HeaderParams, string>;
-
   let sortedColumn: string;
   let sortedOrder: SortOrder;
+
+  // Parâmetros
+  export let columns: Column[] = [];
 
   function setStatus(column: string, sort: SortOrder) {
     sortedColumn = column;
@@ -22,46 +19,21 @@
   function updateUrl() {
     // Aplica o sort caso o nome da coluna seja diferente
     // Evita push desnecessário no history
-    const query = { ...route.query };
+    const q = router.location.query;
+    const queryParams = { ...(q.get() as Record<string, string>) };
 
-    if (query.sort !== sortedColumn) {
-      // q.set("sort", sortedColumn);
-      query.sort = sortedColumn;
+    if (queryParams.sort !== sortedColumn) {
+      queryParams.sort = sortedColumn;
     }
-    if (query.order !== sortedOrder) {
+    if (queryParams.order !== sortedOrder) {
       if (sortedOrder) {
-        // q.set("order", sortedOrder);
-        query.order = sortedOrder;
+        queryParams.order = sortedOrder;
       } else {
-        // q.delete("order");
-        delete query.order;
+        delete queryParams.order;
       }
     }
-    router.location.query.replace(query);
+    q.replace(queryParams);
   }
-
-  // function getIcon(current: boolean, ascending: boolean): string {
-  //   if (!current) {
-  //     return iconAscending;
-  //   }
-  //   return ascending ? iconAscendingCurrent : iconDescendingCurrent;
-  // }
-
-  let columns: Column[] = [
-    {
-      property: "id",
-      label: "ID",
-      sortable: true,
-    },
-    {
-      property: "descricao",
-      label: "Descrição",
-      sortable: true,
-    },
-    {
-      label: "",
-    },
-  ];
 </script>
 
 <thead>
