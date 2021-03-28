@@ -1,7 +1,6 @@
 <script lang="typescript">
   import type { Column } from "src/models/components/table-column";
   import { parseQueryParams } from "src/utils/parsers";
-  import { onMount } from "svelte";
   import { router } from "tinro";
   import TableHeader from "../../../components/table/Header.svelte";
   import {
@@ -9,14 +8,8 @@
     loadCategorias,
   } from "../../../stores/categoria-servico.store";
 
-  onMount(async () => {
-    await loadCategorias();
-  });
-
   router.subscribe(() => {
-    const params = parseQueryParams(
-      router.location.query.get() as Record<string, string>
-    );
+    const params = parseQueryParams();
     loadCategorias(params);
   });
 
