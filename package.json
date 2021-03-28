@@ -21,6 +21,7 @@
     "@testing-library/svelte": "^3.0.3",
     "@tsconfig/svelte": "^1.0.10",
     "@types/chai": "^4.2.15",
+    "@types/jest": "^26.0.22",
     "@types/mocha": "^8.2.2",
     "@types/snowpack-env": "^2.3.3",
     "@web/dev-server-import-maps": "^0.0.5",
