@@ -1,5 +1,4 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
   "include": [
     "src",
     "types"
@@ -18,6 +17,10 @@
       // More info: https://www.snowpack.dev/guides/streaming-imports
       "src": [
         "./src"
+      ],
+      "types": [
+        "@types/jest",
+        "@types/mocha"
       ]
     },
     /* noEmit - Snowpack builds (emits) files, not tsc. */
