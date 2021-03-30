@@ -43,8 +43,7 @@ describe('parseQueryParams()', () => {
     };
     const resposta = parseQueryParams(params);
     
-    //expect(resposta).to.deep.equal(resposta);
-    expect(resposta).to.be.false;
+    expect(resposta).to.deep.equal(resposta);
   });
 
 });
