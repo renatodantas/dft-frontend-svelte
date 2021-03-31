@@ -6,21 +6,13 @@ export const DEFAULT_SORT_ORDER = 'asc';
  * Parâmetros para paginação das APIs.
  */
 export interface PageableParams {
-  /**
-   * Atributo para ordenação
-   */
+  /** Atributo para ordenação */
   sort?: string,
-  /**
-   * Direção da ordenação (ascendente | descendente)
-   */
+  /** Direção da ordenação (ascendente | descendente) */
   order?: string,
-  /**
-   * Número da página (zero-based index)
-   */
+  /** Número da página (zero-based index) */
   page?: number,
-  /**
-   * Tamanho da página
-   */
+  /** Tamanho da página */
   size?: number,
 }
 

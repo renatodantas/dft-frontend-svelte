@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE, DEFAULT_SORT_ORDER } from "src/models/components/pagination";
+import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE, DEFAULT_SORT_ORDER } from "src/models/components/pageable";
 import { parseQueryParams } from "./parsers";
 
 describe('parseQueryParams()', () => {

@@ -1,38 +1,19 @@
 <script lang="typescript">
   import type { Column } from "src/models/components/table-column";
-  import { router } from "tinro";
+  import { createEventDispatcher } from "svelte";
   import HeaderColumn from "./HeaderColumn.svelte";
-
-  type SortOrder = "desc" | undefined;
-  let sortedColumn: string;
-  let sortedOrder: SortOrder;
 
   // Parâmetros
   export let columns: Column[] = [];
 
-  function setStatus(column: string, sort: SortOrder) {
+  let sortedColumn: string | undefined;
+  let sortedOrder: string | undefined;
+  const dispatcher = createEventDispatcher();
+
+  function setStatus(column?: string, sort?: string): void {
     sortedColumn = column;
     sortedOrder = sort;
-    updateUrl();
-  }
-
-  function updateUrl() {
-    // Aplica o sort caso o nome da coluna seja diferente
-    // Evita push desnecessário no history
-    const q = router.location.query;
-    const queryParams = { ...(q.get() as Record<string, string>) };
-
-    if (queryParams.sort !== sortedColumn) {
-      queryParams.sort = sortedColumn;
-    }
-    if (queryParams.order !== sortedOrder) {
-      if (sortedOrder) {
-        queryParams.order = sortedOrder;
-      } else {
-        delete queryParams.order;
-      }
-    }
-    q.replace(queryParams);
+    dispatcher("sort", { sort: sortedColumn, order: sortedOrder });
   }
 </script>
 
@@ -43,7 +24,7 @@
         label={column.label}
         sortable={column.sortable}
         isCurrent={sortedColumn === column.property}
-        on:sort={(e) => setStatus(`${column.property}`, e.detail.sort)}
+        on:sort={(e) => setStatus(column.property, e.detail)}
       />
     {/each}
   </tr>

@@ -8,7 +8,7 @@
   const iconAscending = "bi-caret-up";
   const iconAscendingCurrent = "bi-caret-up-fill";
   const iconDescendingCurrent = "bi-caret-down-fill";
-  const dispatcher = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
   export let label: string;
   export let sortable = false;
@@ -22,7 +22,7 @@
 
   function changeOrder() {
     isAscending = !isAscending;
-    dispatcher("sort", { sort: isAscending ? "asc" : "desc" });
+    dispatch("sort", isAscending ? "asc" : "desc");
   }
 </script>
 

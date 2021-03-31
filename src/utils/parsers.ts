@@ -1,4 +1,4 @@
-import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE, DEFAULT_SORT_ORDER, PageableParams } from "src/models/components/pagination";
+import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE, DEFAULT_SORT_ORDER, PageableParams } from "src/models/components/pageable";
 import { router } from "tinro";
 
 /**
@@ -6,34 +6,36 @@ import { router } from "tinro";
  * o formato a ser enviado na requisição da API,
  * ignorando os valores default.
  * 
- * @param params parâmetros da query string (opcional);
+ * Os novos parâmetros serão analisados e adicionados
+ * aos já existentes.
+ * 
+ * @param newParams novos parâmetros para a query string (opcional);
  *          caso não seja fornecido, será obtido automaticamente
  *          do componente de router
  * @returns {PageableParams} parâmetros para envio na requisição
  */
-export function parseQueryParams(_params?: Record<string, string>): PageableParams {
-  const params = _params || router.location.query.get() as Record<string, string>;
-  const pageable: PageableParams = {};
+export function parseQueryParams(newParams: Record<string, string> = {}): PageableParams {
+  const routerParams = router.location.query.get() as Record<string, string>
+  const pageable: PageableParams = { ...routerParams, ...newParams };
+  console.log('Antes:', pageable);
   
-  const page = parseInt(params["page"]);
-  if (page && page !== DEFAULT_PAGE_NUMBER) {
-    pageable.page = page;
+  if (pageable.page == DEFAULT_PAGE_NUMBER) {
+    delete pageable.page;
   }
 
-  const size = parseInt(params["size"]);
-  if (size && size !== DEFAULT_PAGE_SIZE) {
-    pageable.size = size;
+  if (pageable.size == DEFAULT_PAGE_SIZE) {
+    delete pageable.size;
   }
 
-  const order = params['order'];
-  if (order !== DEFAULT_SORT_ORDER) {
-    pageable.order = order;
+  if (pageable.order == DEFAULT_SORT_ORDER) {
+    delete pageable.order;
   }
 
-  const sort = params['sort'];
-  if (sort) {
-    pageable.sort = sort;
-  }
+  // Não precisa, pq já foi incluído
+  // const sort = newParams["sort"];
+  // if (sort) {
+  //   pageable.sort = sort;
+  // }
 
   return pageable;
 }

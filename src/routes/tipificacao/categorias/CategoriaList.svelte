@@ -1,4 +1,5 @@
 <script lang="typescript">
+  import Paginator from "src/components/table/Paginator.svelte";
   import type { Column } from "src/models/components/table-column";
   import { parseQueryParams } from "src/utils/parsers";
   import { router } from "tinro";
@@ -6,12 +7,29 @@
   import {
     categorias,
     loadCategorias,
+    paginas,
   } from "../../../stores/categoria-servico.store";
 
   router.subscribe(() => {
     const params = parseQueryParams();
     loadCategorias(params);
   });
+
+  function paginar(e: CustomEvent<number>) {
+    const pagina = `${e.detail}`;
+    // Aplica o sort caso o nome da coluna seja diferente
+    // Evita push desnecessário no history
+    const params = parseQueryParams({ page: pagina }) as Record<string, string>;
+    console.log("PARAMS PAGINAR:", params);
+    router.location.query.replace(params);
+  }
+
+  function ordenar(e: CustomEvent<{ sort: string; order: string }>) {
+    const { sort, order } = e.detail;
+    const params = parseQueryParams({ sort, order }) as Record<string, string>;
+    console.log("PARAMS ORDENAR:", params);
+    router.location.query.replace(params);
+  }
 
   const columns: Column[] = [
     {
@@ -41,7 +59,7 @@
   </div>
 
   <table class="table table-striped table-bordered">
-    <TableHeader {columns} />
+    <TableHeader {columns} on:sort={ordenar} />
     <tbody>
       {#each $categorias as item}
         <tr>
@@ -62,21 +80,7 @@
     </tbody>
   </table>
 
-  <nav aria-label="Navegação">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
-          >Primeira</a
-        >
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">Última</a>
-      </li>
-    </ul>
-  </nav>
+  <Paginator paginas={$paginas} on:page={paginar} />
 </div>
 
 <style>
