@@ -18,10 +18,6 @@
       "src": [
         "./src"
       ],
-      "types": [
-        "@types/jest",
-        "@types/mocha"
-      ]
     },
     /* noEmit - Snowpack builds (emits) files, not tsc. */
     "noEmit": true,

@@ -17,7 +17,6 @@ import { router } from "tinro";
 export function parseQueryParams(newParams: Record<string, string> = {}): PageableParams {
   const routerParams = router.location.query.get() as Record<string, string>
   const pageable: PageableParams = { ...routerParams, ...newParams };
-  console.log('Antes:', pageable);
   
   if (pageable.page == DEFAULT_PAGE_NUMBER) {
     delete pageable.page;
@@ -30,12 +29,6 @@ export function parseQueryParams(newParams: Record<string, string> = {}): Pageab
   if (pageable.order == DEFAULT_SORT_ORDER) {
     delete pageable.order;
   }
-
-  // Não precisa, pq já foi incluído
-  // const sort = newParams["sort"];
-  // if (sort) {
-  //   pageable.sort = sort;
-  // }
 
   return pageable;
 }

@@ -5,14 +5,15 @@
    */
   import { createEventDispatcher } from "svelte";
 
+  export let label: string;
+  export let sortable = false;
+  export let isCurrent = false;
+
   const iconAscending = "bi-caret-up";
   const iconAscendingCurrent = "bi-caret-up-fill";
   const iconDescendingCurrent = "bi-caret-down-fill";
   const dispatch = createEventDispatcher();
 
-  export let label: string;
-  export let sortable = false;
-  export let isCurrent = false;
   let isAscending = true;
   $: icon = !isCurrent
     ? iconAscending
