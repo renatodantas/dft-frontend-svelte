@@ -3,10 +3,10 @@
   import { createEventDispatcher } from "svelte";
 
   export let paginas: Pageable<unknown> | null;
-  const dispatcher = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
   function emit(pagina: number) {
-    dispatcher("page", pagina);
+    dispatch("page", pagina);
   }
 </script>
 

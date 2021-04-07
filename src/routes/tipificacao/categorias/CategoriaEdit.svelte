@@ -1,18 +1,30 @@
 <script lang="typescript">
 </script>
 
-<div class="container">
-  <div class="card card-titulo shadow-sm my-4">
-    <div class="card-body d-flex justify-content-between align-items-center">
-      <strong>Editar categoria</strong>
+<div class="modal" tabindex="-1" id="categoriaEdit">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Categoria</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        />
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Fechar
+        </button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
     </div>
   </div>
-
-  <form />
 </div>
 
 <style>
-  .card-body {
-    height: 3rem;
-  }
 </style>
