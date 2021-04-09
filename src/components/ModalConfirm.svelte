@@ -13,7 +13,7 @@
 </script>
 
 <div
-  class="modal"
+  class="modal fade"
   tabindex="-1"
   id="modalConfirm"
   aria-labelledby="exampleModalLabel"
@@ -36,10 +36,11 @@
       <div class="modal-footer">
         <button
           type="button"
-          class="btn btn-secondary btn-sm"
+          class="btn btn-outline-secondary btn-sm"
           data-bs-dismiss="modal"
           on:click={() => confirmar(false)}
         >
+          <i class="bi-x" />
           {labelCancelar}
         </button>
         <button
@@ -48,6 +49,7 @@
           data-bs-dismiss="modal"
           on:click={() => confirmar(true)}
         >
+          <i class="bi-check" />
           {labelConfirmar}
         </button>
       </div>

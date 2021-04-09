@@ -1,4 +1,4 @@
-import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE, DEFAULT_SORT_ORDER, PageableParams } from "src/models/components/pageable";
+import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE, DEFAULT_SORT_ORDER, PageableParams, RecordParams } from "src/models/components/pageable";
 import { router } from "tinro";
 
 /**
@@ -14,7 +14,7 @@ import { router } from "tinro";
  *          do componente de router
  * @returns {PageableParams} parâmetros para envio na requisição
  */
-export function parseQueryParams(newParams: Record<string, string> = {}): PageableParams {
+export function parseQueryParams(newParams: Record<string, string> = {}): PageableParams | RecordParams {
   const routerParams = router.location.query.get() as Record<string, string>
   const pageable: PageableParams = { ...routerParams, ...newParams };
   

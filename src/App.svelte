@@ -2,8 +2,8 @@
   import { Route } from "tinro";
   import Navbar from "./components/Navbar.svelte";
   import Sidebar from "./components/Sidebar.svelte";
-  import Router from "./Router.svelte";
   import { configRouter } from "./routes/route-config";
+  import Router from "./routes/Routes.svelte";
 
   // Configura o router com as opções ideais para a aplicação
   configRouter();

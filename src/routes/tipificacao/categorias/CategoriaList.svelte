@@ -1,7 +1,8 @@
-<script lang="typescript">
+<script lang="typescript" context="module">
   import ModalConfirm from "src/components/ModalConfirm.svelte";
   import Header from "src/components/table/Header.svelte";
   import Paginator from "src/components/table/Paginator.svelte";
+  import type { RecordParams } from "src/models/components/pageable";
   import type { Column } from "src/models/components/table-column";
   import type { CategoriaServico } from "src/models/domain/categoria-servico";
   import {
@@ -9,30 +10,31 @@
     categoriaSelecionada,
     loadCategorias,
     paginas,
+    removeCategoria,
   } from "src/stores/categoria-servico.store";
   import { parseQueryParams } from "src/utils/parsers";
   import { router } from "tinro";
-  import CategoriaEdit from "./CategoriaEdit.svelte";
 
-  router.subscribe(() => {
+  router.subscribe((currentRoute) => {
+    console.log("Mudou route: ", currentRoute.path);
+
     const params = parseQueryParams();
     loadCategorias(params);
   });
+</script>
 
+<script lang="typescript">
   function paginar(e: CustomEvent<number>) {
     const pagina = e.detail;
     // Aplica o sort caso o nome da coluna seja diferente
     // Evita push desnecessário no history
-    const params = parseQueryParams({ page: pagina + "" }) as Record<
-      string,
-      string
-    >;
+    const params = parseQueryParams({ page: `${pagina}` }) as RecordParams;
     router.location.query.replace(params);
   }
 
   function ordenar(e: CustomEvent<{ sort: string; order: string }>) {
     const { sort, order } = e.detail;
-    const params = parseQueryParams({ sort, order }) as Record<string, string>;
+    const params = parseQueryParams({ sort, order }) as RecordParams;
     router.location.query.replace(params);
   }
 
@@ -41,7 +43,7 @@
   }
 
   function excluir() {
-    console.log("Bora excluir o q? " + $categoriaSelecionada.descricao);
+    removeCategoria($categoriaSelecionada.id as number);
   }
 
   const columns: Column[] = [
@@ -113,8 +115,6 @@
   mensagem="Confirma a exclusão desta categoria?"
   on:confirm={excluir}
 />
-
-<CategoriaEdit />
 
 <style>
   .card-body {

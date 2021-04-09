@@ -23,3 +23,16 @@ export async function loadCategorias(paginacao: PageableParams): Promise<void> {
     console.log(error);
   }
 }
+
+export async function removeCategoria(id: number): Promise<void> {
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/categorias-servico/${id}`, {
+        withCredentials: true,
+      });
+    
+  } catch (error) {
+    alert('Deu erro!');
+    console.log(error);
+  }
+}
