@@ -9,3 +9,7 @@ html, body {
   color: #43408F;
   background-color: rgba(203, 201, 240, 0.3) !important;
 }
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: rgba(250, 250, 250, 0.9);
+}

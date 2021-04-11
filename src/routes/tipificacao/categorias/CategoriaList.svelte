@@ -4,10 +4,8 @@
   import Paginator from "src/components/table/Paginator.svelte";
   import type { RecordParams } from "src/models/components/pageable";
   import type { Column } from "src/models/components/table-column";
-  import type { CategoriaServico } from "src/models/domain/categoria-servico";
   import {
     categorias,
-    categoriaSelecionada,
     loadCategorias,
     paginas,
     removeCategoria,
@@ -24,6 +22,8 @@
 </script>
 
 <script lang="typescript">
+  let idExclusao: number;
+
   function paginar(e: CustomEvent<number>) {
     const pagina = e.detail;
     // Aplica o sort caso o nome da coluna seja diferente
@@ -38,12 +38,8 @@
     router.location.query.replace(params);
   }
 
-  function selecionar(item: CategoriaServico) {
-    categoriaSelecionada.set(item);
-  }
-
   function excluir() {
-    removeCategoria($categoriaSelecionada.id as number);
+    removeCategoria(idExclusao);
   }
 
   const columns: Column[] = [
@@ -68,7 +64,7 @@
     <div class="card-body d-flex justify-content-between align-items-center">
       <strong>Categorias de Serviço</strong>
       <a class="btn btn-primary btn-sm" href="/tipificacao/categorias/novo">
-        Incluir
+        <i class="bi-plus align-middle strong" /> Incluir
       </a>
     </div>
   </div>
@@ -82,21 +78,19 @@
           <td>{item.descricao}</td>
           <td class="text-center">
             <div class="btn-group" role="group" aria-label="Ações">
-              <button
+              <a
+                href={`/tipificacao/categorias/${item.id}`}
                 class="btn btn-sm btn-outline-dark"
                 title="Editar"
-                data-bs-toggle="modal"
-                data-bs-target="#categoriaEdit"
-                on:click={() => selecionar(item)}
+                on:click={() => (idExclusao = Number(item.id))}
               >
                 <i class="bi-pencil-square" />
-              </button>
+              </a>
               <button
                 class="btn btn-sm btn-outline-danger"
                 title="Excluir"
                 data-bs-toggle="modal"
                 data-bs-target="#modalConfirm"
-                on:click={() => selecionar(item)}
               >
                 <i class="bi-trash" />
               </button>
@@ -119,5 +113,10 @@
 <style>
   .card-body {
     height: 3rem;
+  }
+
+  tbody > tr:hover {
+    background-color: rgba(203, 201, 240, 0.3);
+    cursor: pointer;
   }
 </style>
