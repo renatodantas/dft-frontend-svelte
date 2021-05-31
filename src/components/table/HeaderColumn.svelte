@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   /**
    * Componente que renderiza uma coluna de um header de tabela.
    * Incorpora itens como ordenação.

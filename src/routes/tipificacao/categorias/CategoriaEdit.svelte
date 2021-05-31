@@ -1,10 +1,10 @@
-<script lang="typescript">
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { meta } from "tinro";
   import {
     categoriaSelecionada,
     loadCategoria,
-  } from "src/stores/categoria-servico.store";
-  import { onMount } from "svelte";
-  import { meta } from "tinro";
+  } from "../../../stores/categoria-servico.store";
 
   const route = meta();
 

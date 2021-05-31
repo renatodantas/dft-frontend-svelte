@@ -1,6 +1,6 @@
-<script lang="typescript">
-  import { itens } from "src/models/components/sidebar-list";
+<script lang="ts">
   import { active, meta } from "tinro";
+  import { itens } from "../models/components/sidebar-list";
   import { sidebarItens } from "../stores/sidebar.store";
 
   // Listener para mudanças de navegação

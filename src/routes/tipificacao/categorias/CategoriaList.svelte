@@ -1,17 +1,17 @@
-<script lang="typescript" context="module">
-  import ModalConfirm from "src/components/ModalConfirm.svelte";
-  import Header from "src/components/table/Header.svelte";
-  import Paginator from "src/components/table/Paginator.svelte";
+<script lang="ts" context="module">
   import type { RecordParams } from "src/models/components/pageable";
   import type { Column } from "src/models/components/table-column";
+  import { router } from "tinro";
+  import ModalConfirm from "../../../components/ModalConfirm.svelte";
+  import Header from "../../../components/table/Header.svelte";
+  import Paginator from "../../../components/table/Paginator.svelte";
   import {
     categorias,
     loadCategorias,
     paginas,
     removeCategoria,
-  } from "src/stores/categoria-servico.store";
-  import { parseQueryParams } from "src/utils/parsers";
-  import { router } from "tinro";
+  } from "../../../stores/categoria-servico.store";
+  import { parseQueryParams } from "../../../utils/parsers";
 
   router.subscribe((currentRoute) => {
     console.log("Mudou route: ", currentRoute.path);
@@ -21,7 +21,7 @@
   });
 </script>
 
-<script lang="typescript">
+<script lang="ts">
   let idExclusao: number;
 
   function paginar(e: CustomEvent<number>) {

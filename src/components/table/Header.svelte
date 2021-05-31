@@ -1,6 +1,6 @@
-<script lang="typescript">
-  import type { Column } from "src/models/components/table-column";
+<script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import type { Column } from "../../models/components/table-column";
   import HeaderColumn from "./HeaderColumn.svelte";
 
   // Parâmetros

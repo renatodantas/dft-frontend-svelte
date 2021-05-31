@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import { router } from "tinro";
   import type { CardLink } from "../models/components/card-link";
 

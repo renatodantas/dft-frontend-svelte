@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import { Route } from "tinro";
   import Lazy from "../utils/Lazy.svelte";
   import Error404 from "./errors/Error404.svelte";

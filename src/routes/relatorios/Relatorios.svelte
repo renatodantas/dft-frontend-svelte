@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import CardLinks from "../../components/CardLinks.svelte";
   import type { CardLink } from "../../models/components/card-link";
 

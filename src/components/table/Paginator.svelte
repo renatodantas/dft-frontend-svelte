@@ -1,6 +1,6 @@
-<script lang="typescript">
-  import type { Pageable } from "src/models/components/pageable";
+<script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import type { Pageable } from "../../models/components/pageable";
 
   export let paginas: Pageable<unknown> | null;
   const dispatch = createEventDispatcher();

@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import { Route } from "tinro";
   import Navbar from "./components/Navbar.svelte";
   import Sidebar from "./components/Sidebar.svelte";
