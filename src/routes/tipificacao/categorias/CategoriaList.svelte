@@ -63,8 +63,11 @@
   <div class="card card-titulo shadow-sm my-4">
     <div class="card-body d-flex justify-content-between align-items-center">
       <strong>Categorias de Serviço</strong>
-      <a class="btn btn-primary btn-sm" href="/tipificacao/categorias/novo">
-        <i class="bi-plus align-middle strong" /> Incluir
+      <a
+        class="btn btn-primary btn-sm d-flex align-items-center"
+        href="/tipificacao/categorias/novo"
+      >
+        <i class="bi-plus-circle mx-1" /> Incluir
       </a>
     </div>
   </div>
@@ -113,10 +116,5 @@
 <style>
   .card-body {
     height: 3rem;
-  }
-
-  tbody > tr:hover {
-    background-color: rgba(203, 201, 240, 0.3);
-    cursor: pointer;
   }
 </style>

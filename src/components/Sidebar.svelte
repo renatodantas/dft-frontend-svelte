@@ -7,34 +7,33 @@
     <img src="/dft-logo.png" alt="Logotipo" height="40" />
     DFT
   </a>
+  <ul class="nav flex-column mt-4">
+    {#each $sidebarItens as item}
+      <li class="nav-item">
+        <a
+          class="nav-link d-inline-flex text-white"
+          class:active={item.href === "#"}
+          href={item.href}
+        >
+          <div class="icone">
+            <i class={item.icone} />
+          </div>
+          <div>
+            {item.descricao}
+          </div>
+        </a>
+      </li>
+    {/each}
+  </ul>
 </div>
-
-<ul class="nav flex-column mt-4">
-  {#each $sidebarItens as item}
-    <li class="nav-item">
-      <a
-        class="nav-link d-inline-flex text-white"
-        class:active={item.href === "#"}
-        href={item.href}
-      >
-        <div class="icone">
-          <i class={item.icone} />
-        </div>
-        <div>
-          {item.descricao}
-        </div>
-      </a>
-    </li>
-  {/each}
-</ul>
 
 <style>
   #sidebar-logo {
-    height: 55px;
+    min-height: 100vh;
     background-color: #43408f;
   }
 
-  #sidebar-logo a {
+  #sidebar-logo > a {
     margin-left: 10px;
     text-decoration: none;
     color: #d3d2de;

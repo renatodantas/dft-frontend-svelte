@@ -1,20 +1,25 @@
 /* Ícones do projeto */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
+html {
+  height: -webkit-fill-available;
+}
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
 }
 
-html {
-  height: -webkit-fill-available;
-}
-
+/** Cards */
 .card-titulo {
   color: #43408F;
   background-color: rgba(203, 201, 240, 0.3) !important;
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: rgba(250, 250, 250, 0.9);
+/** Tables */
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: white;
+}
+.table-striped > tbody > tr:hover {
+  background-color: rgba(84, 70, 243, 0.1);
+  cursor: pointer;
 }
